@@ -4,7 +4,7 @@
 
 **Status:** research concept. No SPOTRECON prototype or field performance data is included.
 
-![SPOTRECON R2 concept poster](SPOTRECON-R2.png)
+![SPOTRECON R2 concept poster](SPOTRECON-R2.jpg)
 
 ## The idea
 
@@ -16,7 +16,7 @@ The proposed dock checks stationary vehicle state and approach clearance. Its re
 
 | File | Contents |
 | --- | --- |
-| [SPOTRECON-R2.png](SPOTRECON-R2.png) | Final revised concept poster |
+| [SPOTRECON-R2.jpg](SPOTRECON-R2.jpg) | Final revised concept poster |
 | [TEASER.md](TEASER.md) | Short public introduction |
 | [COURT-REVIEW.md](COURT-REVIEW.md) | Engineering changes, assumptions, failure tests, review record and primary references |
 
@@ -24,13 +24,21 @@ The proposed dock checks stationary vehicle state and approach clearance. Its re
 
 For an ideal rectilinear camera looking straight down at flat ground, with square pixels, a **90° horizontal field of view**, **3840 × 2160** image and height **20 m above ground**:
 
-$$W = 2h\tan(\phi_H/2) = 40\ \mathrm{m}$$
+$$
+W = 2h\tan(\phi_H/2) = 40\ \mathrm{m}
+$$
 
-$$H = W\frac{2160}{3840} = 22.5\ \mathrm{m}$$
+$$
+H = W\frac{2160}{3840} = 22.5\ \mathrm{m}
+$$
 
-$$A = WH = 900\ \mathrm{m^2}$$
+$$
+A = WH = 900\ \mathrm{m^2}
+$$
 
-$$\mathrm{GSD} = \frac{W}{3840} \approx 10.4\ \mathrm{mm/pixel}$$
+$$
+\mathrm{GSD} = \frac{W}{3840} \approx 10.4\ \mathrm{mm/pixel}
+$$
 
 This is a nominal single-frame ground footprint and sampling interval. It establishes neither optical resolution nor occupancy or geolocation accuracy. The example altitude is an assumption, not an approved operating limit.
 
@@ -38,13 +46,17 @@ A 150 m-radius disk covers approximately **70,686 m²**, or **78.5 such frame ar
 
 Observation age uses consistent clocks:
 
-$$\Delta t = t_{\mathrm{display}} - t_{\mathrm{capture}}$$
+$$
+\Delta t = t_{\mathrm{display}} - t_{\mathrm{capture}}
+$$
 
 Hidden, stale or uncertain spaces become **unknown**. The age limit requires validation.
 
 The proposed energy gate funds the complete allowed contingency sequence:
 
-$$E_{\mathrm{remaining,lower}} \ge E_{\mathrm{return,upper}} + E_{\mathrm{approach/abort,upper}} + E_{\mathrm{divert/land,upper}} + E_{\mathrm{margin}}$$
+$$
+E_{\mathrm{remaining,lower}} \ge E_{\mathrm{return,upper}} + E_{\mathrm{approach/abort,upper}} + E_{\mathrm{divert/land,upper}} + E_{\mathrm{margin}}
+$$
 
 Each energy term and uncertainty bound needs measurements on the configured aircraft.
 
