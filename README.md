@@ -4,9 +4,15 @@
 
 **Status:** research concept. No SPOTRECON prototype or field performance data is included.
 
-![SPOTRECON R2 concept poster](SPOTRECON-R2.jpg)
+![A camera drone lifts from a parked car’s roof dock. A phone map marks individual parking spaces as empty, occupied, or unknown.](SPOTRECON-R2.jpg)
 
-## The idea
+In the poster’s demo, one space was observed empty 12 seconds ago and another
+occupied 3 seconds ago. Hidden, stale, or uncertain spaces are marked **unknown**.
+The times illustrate what a driver would see. Field testing is still pending.
+
+<a name="the-idea"></a>
+
+## How the parking scout would work
 
 A guarded quadcopter inspects a predefined, cleared route while its pilot maintains visual line of sight. The map reports **observed empty / occupied / unknown**, with capture age for each observation. Availability can change; a report does not reserve a space.
 
@@ -14,11 +20,13 @@ The proposed dock checks stationary vehicle state and approach clearance. Its re
 
 ## In this repository
 
-| File | Contents |
+The poster illustrates the proposed flight. The two text files explain the workflow and how it could be tested.
+
+| Resource | What it covers |
 | --- | --- |
-| [SPOTRECON-R2.jpg](SPOTRECON-R2.jpg) | Final revised concept poster |
-| [TEASER.md](TEASER.md) | Short public introduction |
-| [COURT-REVIEW.md](COURT-REVIEW.md) | Engineering changes, assumptions, failure tests, review record and primary references |
+| [Vehicle dock and parking map poster (JPEG)](SPOTRECON-R2.jpg) | Final revised concept poster |
+| [SPOTRECON project introduction (Markdown)](TEASER.md) | Short public introduction |
+| [SPOTRECON R2 engineering review (Markdown)](COURT-REVIEW.md) | Engineering changes, assumptions, failure tests, review record and primary references |
 
 ## Checked illustrative math
 
@@ -40,11 +48,11 @@ $$
 \mathrm{GSD} = \frac{W}{3840} \approx 10.4\ \mathrm{mm/pixel}
 $$
 
-This is a nominal single-frame ground footprint and sampling interval. It establishes neither optical resolution nor occupancy or geolocation accuracy. The example altitude is an assumption, not an approved operating limit.
+Under these assumptions, one frame covers 40 m by 22.5 m, or 900 square metres. Each pixel spans about 10.4 mm on the ground. Field tests would have to measure optical resolution, parking-space classification accuracy, and location error. The example altitude is an assumption, not an approved operating limit.
 
 A 150 m-radius disk covers approximately **70,686 m²**, or **78.5 such frame areas** before overlap, occlusions and route margins. Operating radius and area surveyed are separate quantities.
 
-Observation age uses consistent clocks:
+Subtract the capture time from the display time, using a common clock, to find the age of each observation.
 
 $$
 \Delta t = t_{\mathrm{display}} - t_{\mathrm{capture}}
@@ -52,7 +60,7 @@ $$
 
 Hidden, stale or uncertain spaces become **unknown**. The age limit requires validation.
 
-The proposed energy gate funds the complete allowed contingency sequence:
+To continue a flight, the lower estimate of remaining energy must cover the upper estimates for return, a docking attempt and abort, diversion and landing, plus a margin.
 
 $$
 E_{\mathrm{remaining,lower}} \ge E_{\mathrm{return,upper}} + E_{\mathrm{approach/abort,upper}} + E_{\mathrm{divert/land,upper}} + E_{\mathrm{margin}}
@@ -80,5 +88,5 @@ The next gate is controlled validation: first fixed-pad docking and fault inject
 
 Concept direction: **Ray Peloquin**. Revision prepared with **Codex** using the Synthetic Court review process. Grok, Claude and Gemini returned AI reviews; selected suggestions were independently checked and some were corrected or rejected. Meta AI did not complete a technical review. These consultations are not endorsements or experimental evidence.
 
-See [the Court review](COURT-REVIEW.md) for the accepted findings and primary references. This repository documents a concept; it contains no flight-control software or operational deployment package.
+See [the SPOTRECON R2 engineering review](COURT-REVIEW.md) for the accepted findings and primary references. This repository documents a concept; it contains no flight-control software or operational deployment package.
 
